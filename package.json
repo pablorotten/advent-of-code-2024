@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@types/node": "^22.10.1"
-  }
+  },
+  "scripts": {
+  "build": "tsc && cp days/day1/input.txt out/days/day1/"
+}
 }
