@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "target": "ES5",
-    "module": "CommonJS",
-    "outDir": "out",
-    "sourceMap": true
+    "outDir": "./out", // Output folder for compiled files
+    "sourceMap": true, // Generate source maps for debugging
+    "rootDir": "./",   // Root directory of your source files
+    "target": "ES6",   // Target JavaScript version
+    "module": "commonjs" // Module system for Node.js
   }
 }
