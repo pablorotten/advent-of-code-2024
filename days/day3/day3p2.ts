@@ -1,10 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const filePath = path.join(__dirname, "input.txt");
+const filePath = path.join(__dirname, "input2.txt");
 const fileContent: string = fs.readFileSync(filePath, "utf8");
-
-
 
 const regex = /mul\((\d+),\s*(\d+)\)/g;
 
