@@ -3,6 +3,6 @@
     "@types/node": "^22.10.1"
   },
   "scripts": {
-    "build": "tsc && cp days/day4/input.txt out/days/day4/"
+    "build": "tsc && cp days/day6/input-test.txt out/days/day6/"
   }
 }
