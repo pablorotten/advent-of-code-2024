@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const filePath = path.join(__dirname, "input.txt");
+const filePath = path.join(__dirname, "input-test.txt");
 const input: string = fs.readFileSync(filePath, "utf8");
 const inputMap = input.split("\n").map((row) => row.split(""));
 const antinodesMap = input.split("\n").map((row) => Array<string>(row.length).fill("."));
@@ -51,10 +51,13 @@ function calculateFrecuencies<T>(antennas: T[], size: number): T[][] {
 
 function calculateAntinodes(antenna1: [number, number], antenna2: [number, number]): number[][] {
   const vector = [antenna2[0] - antenna1[0], antenna2[1] - antenna1[1]];
-  const antinodes: number[][] = [
-    [antenna1[0] - vector[0], antenna1[1] - vector[1]],
-    [antenna2[0] + vector[0], antenna2[1] + vector[1]]
-  ];
+  let antinodes: number[][] = [];
+
+  for (let i = 0; i < mapXSize; i++) {
+    antinodes.push([antenna1[0] - (vector[0] + vector[0] * i), antenna1[1] - (vector[1] + vector[1] * i)]);
+    antinodes.push([antenna2[0] + (vector[0] + vector[0] * i), antenna2[1] + (vector[1] + vector[1] * i)]);
+
+  }
 
   return antinodes;
 }
