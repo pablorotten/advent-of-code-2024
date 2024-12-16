@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const filePath = path.join(__dirname, "input-test.txt");
+const filePath = path.join(__dirname, "input.txt");
 const input: string = fs.readFileSync(filePath, "utf8");
 const inputMap = input.split("\n").map((row) => row.split(""));
 const antinodesMap = input.split("\n").map((row) => Array<string>(row.length).fill("."));
@@ -70,6 +70,7 @@ const antennasMap = findAntennas(inputMap);
 
 antennasMap.forEach((antennas, key) => {
   const frecuencies = calculateFrecuencies(antennas, 2)
+  
   const antinodes = frecuencies.map((frecuency) => calculateAntinodes(frecuency[0], frecuency[1]));
   antinodes.forEach((antinode) => {
     antinode.forEach((node) => {
@@ -78,6 +79,14 @@ antennasMap.forEach((antennas, key) => {
     });
   });
 });
+
+// add the antennas as antinodes
+antennasMap.forEach((antennas, key) => {
+  antennas.forEach((antenna) => {
+    antinodesMap[antenna[0]][antenna[1]] = "#";
+    })
+});
+
 
 console.log(antinodesMap.map((row) => row.join("")).join("\n"));
 console.log(countAntinodes(antinodesMap));
